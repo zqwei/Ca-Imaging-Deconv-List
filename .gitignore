@@ -20,8 +20,6 @@ Stash
 *.eps
 *.pdf
 *.csv
-brick-*
-spikes-*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
