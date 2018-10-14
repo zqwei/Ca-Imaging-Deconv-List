@@ -20,6 +20,8 @@ Stash
 *.eps
 *.pdf
 *.csv
+brick-*
+spikes-*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -103,4 +105,3 @@ celerybeat-schedule
 # Spyder project settings
 .spyderproject
 Status API Training Shop Blog About Pricing
-
