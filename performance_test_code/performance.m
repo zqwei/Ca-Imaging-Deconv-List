@@ -4,14 +4,15 @@ load('../KS_dat_fit/DataListCells.mat');
 xlimMin = 0;
 xlimMax = 50;
 
-dffPerformance = zeros(length(totCell), 9);
-spkPerformance = zeros(length(totCell), 9);
+dffPerformance = zeros(length(totCell), 10);
+spkPerformance = zeros(length(totCell), 10);
 
 for nCell  = 1:length(totCell)
     load([tempFitDir 'Fast_oopsi_fit_Cell_' num2str(nCell) '.mat'])
     load([tempFitDir 'FRI_oopsi_fit_Cell_' num2str(nCell) '.mat'])
     load([tempFitDir 'MCMC_oopsi_fit_Cell_' num2str(nCell) '.mat'])
     load([tempFitDir 'Peel_oopsi_fit_Cell_' num2str(nCell) '.mat'])
+    load([tempFitDir 'MLSpike_fit_Cell_' num2str(nCell) '.mat'])
     t_vec  = totCell(nCell).CaTime;
     spk    = totCell(nCell).spk;
     dff    = totCell(nCell).dff;
@@ -45,6 +46,9 @@ for nCell  = 1:length(totCell)
 
     corr_dff = corr(normalized_dff, normalized_dat(peelNL.model)');
     dffPerformance(nCell, 9) = corr_dff;
+    
+    corr_dff = corr(normalized_dff, est.F_est);
+    dffPerformance(nCell, 10) = corr_dff;
 
     corr_dff = corr(n_spk', wiener.d'/max(wiener.d),'type','Spearman');
     spkPerformance(nCell, 1) = corr_dff;
@@ -73,11 +77,19 @@ for nCell  = 1:length(totCell)
     corr_dff = corr(n_spk', cont.spk'/max(cont.spk),'type','Spearman');
     spkPerformance(nCell, 7) = corr_dff;
 
-    corr_dff = corr(normalized_dff, peel.spiketrain'/max(peel.spiketrain),'type','Spearman');
+    corr_dff = corr(n_spk', peel.spiketrain'/max(peel.spiketrain),'type','Spearman');
     spkPerformance(nCell, 8) = corr_dff;
 
-    corr_dff = corr(normalized_dff, peelNL.spiketrain'/max(peelNL.spiketrain),'type','Spearman');
+    corr_dff = corr(n_spk', peelNL.spiketrain'/max(peelNL.spiketrain),'type','Spearman');
     spkPerformance(nCell, 9) = corr_dff;
+    
+    if ~isempty(est.spk)
+        ml_n_spk = hist(est.spk, t_frame);
+        corr_dff = corr(n_spk', ml_n_spk','type','Spearman');
+    else
+        corr_dff = nan;
+    end
+    spkPerformance(nCell, 10) = corr_dff;
 end
 
 
@@ -95,15 +107,15 @@ for nGroup = 1:length(expression)
     group(indexExpression & indexCaInd)     = nGroup;
 end
 
-groups = group * ones(1, 9);
+groups = group * ones(1, 10);
 figure;
 scatter(spkPerformance(:), dffPerformance(:),[],groups(:),'filled')
 xlabel('spk. corr.')
 ylabel('dff corr.')
 xlim([0 0.4])
 ylim([0 1])
-setPrint(8, 6, 'xcorr_performance')
-setPrint(8, 6, 'xcorr_performance','png')
+% setPrint(8, 6, 'xcorr_performance')
+% setPrint(8, 6, 'xcorr_performance','png')
 
 groupColor = [         0    0.4470    0.7410
     0.9290    0.6940    0.1250
@@ -125,8 +137,8 @@ for nAx   = 1:length(nTitles)
         end            
     end
 end
-setPrint(8*5, 6*5, 'dff_performance')
-setPrint(8*5, 6*5, 'dff_performance','png')
+% setPrint(8*5, 6*5, 'dff_performance')
+% setPrint(8*5, 6*5, 'dff_performance','png')
 
 figure;
 [~, ax, ~] = gplotmatrix(spkPerformance, [], group, groupColor, 'oooo', [], 'off', [], nTitles, nTitles);
@@ -142,8 +154,8 @@ for nAx   = 1:length(nTitles)
         end            
     end
 end
-setPrint(8*5, 6*5, 'spk_performance')
-setPrint(8*5, 6*5, 'spk_performance','png')
+% setPrint(8*5, 6*5, 'spk_performance')
+% setPrint(8*5, 6*5, 'spk_performance','png')
 
 load('../KS_dat_fit/ParamsFitCells_S2CModel_Fmfix.mat', 'paras');
 numSpk = arrayfun(@(x) length(x.spk)/x.CaTime(end), totCell, 'uniformoutput', false);
