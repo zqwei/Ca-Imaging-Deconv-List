@@ -10,7 +10,6 @@
 % weiz AT janelia DOT hhmi DOT org
 %
 
-%% main code
 function est = mlspike(dff, fr)
     
     addpath('../Func/MLspike/')
