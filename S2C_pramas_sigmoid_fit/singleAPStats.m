@@ -30,7 +30,9 @@ nTitles = {'\tau_{r} (ms)', '\tau_{d} (s)', 'n', 'K', 'Fm'};
 figure;
 hold on
 
-for nGroup = 2
+end_point = [60, 120, 35, 48];
+
+for nGroup = 1:4
     FPattern = nan(1000, length(noAPPattern));
     numSpk   = nan(1000, 1);
     nDat     = 0;
@@ -74,30 +76,38 @@ for nGroup = 2
     FPattern  = FPattern - mean(FPattern(:, 1:preAPLength), 2);
     val = median(FPattern(numSpk==1,preAPLength+1:end), 1);
     val = val - val(1);
-    plot(val, 'linewid', 2)
+    disp(sum(val(1:4:end_point(nGroup))))
+%     plot(val, 'linewid', 2)
 end
 
+% labels = cell(4, 1);
+% 
+% for nlabel = 1:4
+%     labels{nlabel} = [expression{nlabel}, CaIndicator{nlabel}];
+% end
+% 
+% legend(labels)
 
-[coeff, score, latent]        = pca(FPattern);
-figure;
-plot(0:1/60:1, coeff(:,1:4), '-', 'linewid', 1)
-gridxy([11/60],[], 'Color','k','Linestyle','--')
-xlabel('Time (sec)')
-ylabel('PC coeff.')
-legend('PC1', 'PC2', 'PC3', 'PC4')
-box off
-setPrint(8, 6, [PlotDir 'ModelCellFits/AP_Stats_PCAv1'])
-setPrint(8, 6, [PlotDir 'ModelCellFits/AP_Stats_PCAv1'],'png')
-
-figure;
-nTitles = {'PC1', 'PC2', 'PC3', 'PC4'};
-groupColor = [ 0    0.4470    0.7410
-    0.8500    0.3250    0.0980
-    0.9290    0.6940    0.1250
-    0.4940    0.1840    0.5560
-    0.4660    0.6740    0.1880
-    0.3010    0.7450    0.9330
-    0.6350    0.0780    0.1840];
-gplotmatrix(score(numSpk<5,1:4), [], numSpk(numSpk<5), groupColor, 'oooo', [], 'off', [], nTitles, nTitles);
-setPrint(16, 12, [PlotDir 'ModelCellFits/AP_Stats_PCAv2'])
-
+% [coeff, score, latent]        = pca(FPattern);
+% figure;
+% plot(0:1/60:1, coeff(:,1:4), '-', 'linewid', 1)
+% gridxy([11/60],[], 'Color','k','Linestyle','--')
+% xlabel('Time (sec)')
+% ylabel('PC coeff.')
+% legend('PC1', 'PC2', 'PC3', 'PC4')
+% box off
+% setPrint(8, 6, [PlotDir 'ModelCellFits/AP_Stats_PCAv1'])
+% setPrint(8, 6, [PlotDir 'ModelCellFits/AP_Stats_PCAv1'],'png')
+% 
+% figure;
+% nTitles = {'PC1', 'PC2', 'PC3', 'PC4'};
+% groupColor = [ 0    0.4470    0.7410
+%     0.8500    0.3250    0.0980
+%     0.9290    0.6940    0.1250
+%     0.4940    0.1840    0.5560
+%     0.4660    0.6740    0.1880
+%     0.3010    0.7450    0.9330
+%     0.6350    0.0780    0.1840];
+% gplotmatrix(score(numSpk<5,1:4), [], numSpk(numSpk<5), groupColor, 'oooo', [], 'off', [], nTitles, nTitles);
+% setPrint(16, 12, [PlotDir 'ModelCellFits/AP_Stats_PCAv2'])
+% 
