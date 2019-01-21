@@ -16,7 +16,7 @@ function fri = fri_oopsi(dff, tau, fr)
     f_s = fr;
     T   = T_s;
     t   = (1:length(dff))*T_s;
-    t   = t'
+    t   = t';
     
     t_k1     = [];
     a_k1     = [];
@@ -227,7 +227,12 @@ ith_win  = 1;
 for i_0 = 1 : step : tot_len-win_len*TTs+1
     % Time window of the input signal and real number of spikes in the window
     idx    = (i_0:i_0+win_len*TTs-1)';
-    t_x    = original_t(idx);
+    idx    = round(idx);
+    try
+        t_x    = original_t(idx);
+    catch
+        keyboard();
+    end
     x      = original_signal(idx);    
     if mode == 1
         % Exponentials recovery estimating K
