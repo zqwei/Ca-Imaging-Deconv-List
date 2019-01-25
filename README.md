@@ -52,9 +52,11 @@ We made significant improvements and changes to some of the codes.
     * Code (Matlab): https://github.com/epnev/constrained-foopsi
     * Code (Python): https://github.com/epnev/constrained_foopsi_python
 1. MCMC
-    * [Pnevmatikakis et al., 2014](Pnevmatikakis)
+    * [Pnevmatikakis et al., 2014](http://arxiv.org/abs/1311.6864)
     * Code (Matlab, _beta_): https://github.com/epnev/continuous_time_ca_sampler
 1. MLSpike
+    * [Deneux et al., Nat. Commun.,2016](https://www.nature.com/articles/ncomms12190)
+    * Code (Matlab): https://github.com/MLspike
 
 ## Supervised models
 1. PCA + SVM
