@@ -1,6 +1,6 @@
 # List Of Calcium Imaging Deconvolution Methods
 
-[![Gitter](https://badges.gitter.im/zqwei/Ca-Imaging-Deconv-List.svg)](https://gitter.im/zqwei/Ca-Imaging-Deconv-List?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+<script async defer src="https://ephys-imaging.slack.com/slackin.js?large"></script> __Channel calcium2spike__
 
 Here is a collection of published calcium imaging deconvolution methods and link to their codes.
 
@@ -13,13 +13,12 @@ As a part of my thesis work (unpublished yet), we will try to make a comparison 
 > * Dataset description: Simultaneous imaging and loose-seal cell-attached electrical recordings from neurons expressing a variety of genetically encoded calcium indicators. The data is described in: Akerboom, et al JNS 2012 and Chen, et al Nature 2013. The data provides ground truth by recording electrical and GCaMP optical responses simultaneously.
 > * Tested code: all code being test is highlighted in __bold__.
 
-More inquires should be email to: weiz AT janelia DOT hhmi DOT org
-
-## Choices of working models
-
-With rapid development of modern statistical techniques in this field, we found us in an exciting whilst, unfortunately, allodoxaphobia position. It seems that the underlying models are more or less the same, but being solved using different approach under a variety of addtional assumptions of noise structures and constraints. Here we list all models in our comparison list, and in the _first_ version of the comparison, we __only__ focus on those with an available code on github (most of them are generative models).
+More inquires should be email to: __weiz AT janelia DOT hhmi DOT org__
 
 # Imaging to spike models
+
+## Choices of working models
+With rapid development of modern statistical techniques in this field, we found us in an exciting whilst, unfortunately, allodoxaphobia position. It seems that the underlying models are more or less the same, but being solved using different approach under a variety of addtional assumptions of noise structures and constraints. Here we list all models in our comparison list, and in the _first_ version of the comparison, we __only__ focus on those with an available code on github (most of them are generative models).
 
 ## Ruble based models
 1. Thresholding first derivative
@@ -40,7 +39,7 @@ With rapid development of modern statistical techniques in this field, we found 
 1. Spike-triggered mixture (STM)
 
 
-## Model details and our revisions
+# Model details and our revisions
 
 ## Helmchen Model
 * Model:
