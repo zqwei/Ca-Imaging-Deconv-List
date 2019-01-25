@@ -1,6 +1,6 @@
 # List Of Calcium Imaging Deconvolution Methods
 
-<script async defer src="https://ephys-imaging.slack.com/slackin.js?large"></script> __Channel calcium2spike__
+[![Slack Status](https://ephys-imaging.slack.com/badge.svg)](https://ephys-imaging.slack.com/messages/CFPH4E859)
 
 Here is a collection of published calcium imaging deconvolution methods and link to their codes.
 
