@@ -1,6 +1,6 @@
 # List Of Calcium Imaging Deconvolution Methods
 
-[![Slack Status](https://ephys-imaging.slack.com/badge.svg)](https://ephys-imaging.slack.com/messages/CFPH4E859)
+[![](https://img.shields.io/badge/Channel-calcium2spike-blue.svg?style=popout-square&logo=slack)](https://ephys-imaging.slack.com/messages/CFPH4E859)
 
 Here is a collection of published calcium imaging deconvolution methods and link to their codes.
 
