@@ -19,25 +19,24 @@ More inquires should be email to: weiz AT janelia DOT hhmi DOT org
 
 With rapid development of modern statistical techniques in this field, we found us in an exciting whilst, unfortunately, allodoxaphobia position. It seems that the underlying models are more or less the same, but being solved using different approach under a variety of addtional assumptions of noise structures and constraints. Here we list all models in our comparison list, and in the _first_ version of the comparison, we __only__ focus on those with an available code on github (most of them are generative models).
 
-![](texts/models.jpg)
 
 
 <!-- ## Helmchen Model
 * Model:
   * Peeling
-  * Parent model: 
+  * Parent model:
 * Main paper:
   * http://www.hifo.uzh.ch/research/helmchen/publication/grewe2010.pdf
-  * 
+  *
 * Code (__Matlab__): https://github.com/HelmchenLab/CalciumSim
 * Original contribution: Helmchen Lab
-* Revision: 
+* Revision:
 
 ##  SMC OOPSI
 * Model:
-  * Parent model: 
+  * Parent model:
 * Main paper:
-  * 
+  *
 * Note:
   * change of code:
     1. __P.k = V.spikegen.EFGinv(0.01, P, V);__ to __P.k      = log(-log(1-sum(nnorm)/V.T)/V.dt);__
@@ -47,9 +46,9 @@ With rapid development of modern statistical techniques in this field, we found 
 
 ##  Fast OOPSI
 * Model:
-  * Parent model: 
+  * Parent model:
 * Main paper:
-  * 
+  *
 * Note: decaying time constant parameter $\gamma = 1 - \Delta/(1.0)$ is not updated/estimated in the code.
 
 >   1. estimating $\gamma$ is difficult
@@ -68,17 +67,17 @@ With rapid development of modern statistical techniques in this field, we found 
 			3. empirical estimation of noise prior
   * Parent model: Fast OOPSI (using [__conic programming__](http://cvxopt.org/))
 * Main paper:
-  * 
+  *
 * Code (Matlab): https://github.com/epnev/constrained-foopsi
 * Code (Python): https://github.com/epnev/constrained_foopsi_python
 * Original contribution: Eftychios Pnevmatikakis, Josh Merel, Losonczy Lab
 * Revision:
 
 ##  Constrained Fast OOPSI (MCMC spike inference in continuous time)
-* Model: 
-  * Parent model: 
+* Model:
+  * Parent model:
 * Main paper:
-  * 
+  *
 * Code (Matlab, _beta_): https://github.com/epnev/continuous_time_ca_sampler
 * Original contribution: Eftychios Pnevmatikakis, John Merel
 * Revision:
@@ -87,9 +86,9 @@ With rapid development of modern statistical techniques in this field, we found 
 * Model:
   * "Group Lasso" to detect neuronal centers and activity
   * Coordinate descent gready NMF to find neuronal activity and (non-negtive) shapes, based on group lasso initialization
-  * Parent model: 
+  * Parent model:
 * Main paper:
-  * 
+  *
 * Code (Matlab, Python): https://github.com/danielso/ROI_detect
 * Original contribution: Daniel So
 * Revision:
@@ -120,7 +119,7 @@ With rapid development of modern statistical techniques in this field, we found 
 * Original contribution: Losonczy Lab
 
 ## Fast rate of innovation algorithm
-* Model: 
+* Model:
 * Main paper: [Jon Oñativia, Simon R. Schultz, and Pier Luigi Dragotti, A Finite Rate of Innovation algorithm for fast and accurate spike detection from two-photon calcium imaging. (J. Neural Eng. 10 (2013) 046017)](http://stacks.iop.org/1741-2552/10/046017)
 * Code (Matlab): http://www.commsp.ee.ic.ac.uk/~jo210/src/ca_transient.zip
 	* File real_data.m runs the double consistency algorithm on real data and reproduces figure 7 of the journal paper.
@@ -131,7 +130,7 @@ With rapid development of modern statistical techniques in this field, we found 
 * Revision:
 
 ## STM fit based model
-* Model: 
+* Model:
 	* STM fit model: model is built to supervise-learning the parameter of the conditional distribution $p(y \mid x, z) = q(y \mid g(f(x, z)))$, where $y$ is a scalar, $x \in R^N$, $z \in R^M$, $q$ is a univariate distribution, $g$ is some nonlinearity, and $f(x, z) = \log \sum_k \exp\left( \lambda \left[ \sum_l \beta_{kl} (u_l^\top x)^2 + w_k x + a_k \right] \right) / \lambda + v^\top z$. (see __Conditional Modeling Toolkit__ for detail)
 * Main paper: [L. Theis, P. Berens, E. Froudarakis, J. Reimer, M. Roman-Roson, T. Baden, T. Euler, A. S. Tolias, et al.
 Supervised learning sets benchmark for robust spike detection from calcium imaging signals
