@@ -15,10 +15,13 @@ As a part of my thesis work (unpublished yet), we will try to make a comparison 
 
 More inquires should be email to: __weiz AT janelia DOT hhmi DOT org__
 
-# Imaging to spike models
-
 ## Choices of working models
 With rapid development of modern statistical techniques in this field, we found us in an exciting whilst, unfortunately, allodoxaphobia position. It seems that the underlying models are more or less the same, but being solved using different approach under a variety of addtional assumptions of noise structures and constraints. Here we list all models in our comparison list, and in the _first_ version of the comparison, we __only__ focus on those with an available code on github (most of them are generative models).
+
+## Code redistributions
+We made significant improvements and changes to some of the codes.
+
+# Imaging to spike models
 
 ## Ruble based models
 1. Thresholding first derivative
@@ -30,6 +33,8 @@ With rapid development of modern statistical techniques in this field, we found 
 1. Fast OOPSI (FOOPSI)
 1. Finite Rate of Innovation (FRI)
 1. Peeling
+    * [Grewe et al., Nat. Methods, 2010](https://www.nature.com/articles/nmeth.1453)
+    * Code (__Matlab__): https://github.com/HelmchenLab/CalciumSim
 1. Constrained OOPSI (COOPSI)
 1. MCMC
 1. MLSpike
@@ -37,20 +42,6 @@ With rapid development of modern statistical techniques in this field, we found 
 ## Supervised models
 1. PCA + SVM
 1. Spike-triggered mixture (STM)
-
-
-# Model details and our revisions
-
-## Helmchen Model
-* Model:
-  * Peeling
-  * Parent model:
-* Main paper:
-  * http://www.hifo.uzh.ch/research/helmchen/publication/grewe2010.pdf
-  *
-* Code (__Matlab__): https://github.com/HelmchenLab/CalciumSim
-* Original contribution: Helmchen Lab
-* Revision:
 
 ##  SMC OOPSI
 * Model:
@@ -101,42 +92,6 @@ With rapid development of modern statistical techniques in this field, we found 
 * Code (Matlab, _beta_): https://github.com/epnev/continuous_time_ca_sampler
 * Original contribution: Eftychios Pnevmatikakis, John Merel
 * Revision:
-
-## Group LASSO initialization and spatial CNMF
-* Model:
-  * "Group Lasso" to detect neuronal centers and activity
-  * Coordinate descent gready NMF to find neuronal activity and (non-negtive) shapes, based on group lasso initialization
-  * Parent model:
-* Main paper:
-  *
-* Code (Matlab, Python): https://github.com/danielso/ROI_detect
-* Original contribution: Daniel So
-* Revision:
-
-## Deconvolution and demixing of calcium imaging data code
-* Model: An extension of __Constrained Fast OOPSI__
-	* Method extension:
-		1. Dual ascent method
-		2. Conic programming
-		3. Nonngegative Lars
-	* Parent model: Constrained Fast OOPSI (using SPGL1; CVXPY)
-* Main paper:
-* Code (Matlab): https://github.com/epnev/ca_source_extraction
-* Code (__Python__): https://github.com/agiovann/Constrained_NMF
-* Code (source extraction, Python; _alpha_): https://github.com/epnev/SOURCE_EXTRACTION_PYTHON
-* Original contribution: Andrea Giovannucci and Eftychios Pnevmatikakis
-* Revision:
-
-## Sequential Image Analysis
-* Model: Open source package for analysise of time-series imaging data arising from fluorescence microscopy (__Losonczy Lab__)
- * Correction of motion artifacts
- * Segmentation of imaging fields into regions of interest (ROIs)
- * Extraction of dynamic signals from ROIs
- * Parent model:
-  * Constrained Fast OOPSI: https://github.com/epnev/constrained_foopsi_python
-* Main paper: [Kaifosh P, Zaremba J, Danielson N, and Losonczy A. SIMA: Python software for analysis of dynamic fluorescence imaging data. Frontiers in Neuroinformatics. 2014 Aug 27; 8:77. doi: 10.3389/fninf.2014.00077.](http://journal.frontiersin.org/article/10.3389/fninf.2014.00080/full)
-* Code (Python): https://github.com/losonczylab/sima
-* Original contribution: Losonczy Lab
 
 ## Fast rate of innovation algorithm
 * Model:
