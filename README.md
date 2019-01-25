@@ -19,9 +19,30 @@ More inquires should be email to: weiz AT janelia DOT hhmi DOT org
 
 With rapid development of modern statistical techniques in this field, we found us in an exciting whilst, unfortunately, allodoxaphobia position. It seems that the underlying models are more or less the same, but being solved using different approach under a variety of addtional assumptions of noise structures and constraints. Here we list all models in our comparison list, and in the _first_ version of the comparison, we __only__ focus on those with an available code on github (most of them are generative models).
 
+# Imaging to spike models
+
+## Ruble based models
+1. Thresholding first derivative
+2. Template matching
+
+## Unsupervised models
+1. Nonngegative Wiener Filter (NWF)
+1. Sequential Monte Carlo method (SMC)
+1. Fast OOPSI (FOOPSI)
+1. Finite Rate of Innovation (FRI)
+1. Peeling
+1. Constrained OOPSI (COOPSI)
+1. MCMC
+1. MLSpike
+
+## Supervised models
+1. PCA + SVM
+1. Spike-triggered mixture (STM)
 
 
-<!-- ## Helmchen Model
+## Model details and our revisions
+
+## Helmchen Model
 * Model:
   * Peeling
   * Parent model:
@@ -145,4 +166,4 @@ bioRxiv, 2014](http://bethgelab.org/publications/127/)
 ## YF06
 
 ## Equation renders of readme file in this git
-Unfortunately, you need to do it on your own side by installing chrome app [Github with Mathjax](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima). -->
+Unfortunately, you need to do it on your own side by installing chrome app [Github with Mathjax](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima).
