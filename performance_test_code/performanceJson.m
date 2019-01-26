@@ -13,8 +13,8 @@ S2C_Hill_Function = S2C_Hill_Function(saveId);
 S2C_Sigmoid_Function = S2C_Sigmoid_Function(saveId);
 S2C_linear_Function = S2C_linear_Function(saveId);
 
-names = {'S2C Linear', 'S2C Hill', 'S2C Sigmoid', 'C2S Nonnegative Wienner Filter', 'C2S FOOPSI', 'C2S Finite Rate Innovation', 'C2S Constrained OOPSI AR1', 'C2S Constrained OOPSI AR2', 'C2S Constrained OOPSI AR3', 'C2S Constrained OOPSI MCMC', 'C2S Peel Linear'}';
-alias = {'S2C Linear', 'S2C Hill', 'S2C Sigmoid', 'NWF', 'FOOPSI', 'FRI', 'AR1', 'AR2', 'AR3', 'MCMC', 'Peel'}';
+names = {'S2C Linear', 'S2C Hill', 'S2C Sigmoid', 'C2S Nonnegative Wienner Filter', 'C2S FOOPSI', 'C2S Finite Rate Innovation', 'C2S Constrained OOPSI AR1', 'C2S Constrained OOPSI AR2', 'C2S Constrained OOPSI AR3', 'C2S Constrained OOPSI MCMC', 'C2S Peel Linear', 'C2S MLSpike'}';
+alias = {'S2C Linear', 'S2C Hill', 'S2C Sigmoid', 'NWF', 'FOOPSI', 'FRI', 'AR1', 'AR2', 'AR3', 'MCMC', 'Peel', 'MLS'}';
 group = zeros(length(totCell), 1);
 cellPerformance = zeros(length(totCell), length(names));
 cellRank  = zeros(length(totCell), length(names));
@@ -24,6 +24,7 @@ for nCell  = 1:length(totCell)
     load([tempFitDir 'FRI_oopsi_fit_Cell_' num2str(nCell) '.mat'])
     load([tempFitDir 'MCMC_oopsi_fit_Cell_' num2str(nCell) '.mat'])
     load([tempFitDir 'Peel_oopsi_fit_Cell_' num2str(nCell) '.mat'])
+    load([tempFitDir 'MLSpike_fit_Cell_' num2str(nCell) '.mat'])
     
     expression = totCell(nCell).expression;
     CaIndicator = totCell(nCell).CaIndicator;
@@ -50,10 +51,11 @@ for nCell  = 1:length(totCell)
     C2S_Constrained_OOPSI_AR3 = cf3.c';
     C2S_Constrained_OOPSI_MCMC = cont.F_est';
     C2S_Peel_Linear = peel.model';
+    C2S_MLSpike = est.F_est;
     
     dff_fit = [ S2C_Linear, S2C_Hill, S2C_Sigmoid, C2S_Nonnegative_Wienner_Filter, ...
         C2S_Fast_OOPSI, C2S_Finite_Rate_Innovation, C2S_Constrained_OOPSI_AR1, C2S_Constrained_OOPSI_AR2, ...
-        C2S_Constrained_OOPSI_AR3, C2S_Constrained_OOPSI_MCMC, C2S_Peel_Linear];
+        C2S_Constrained_OOPSI_AR3, C2S_Constrained_OOPSI_MCMC, C2S_Peel_Linear, C2S_MLSpike];
     dff_fit = double(dff_fit);
     raw_dff = double(raw_dff);
         
@@ -75,16 +77,16 @@ fileID = fopen('performance.json','w');
 fprintf(fileID, '[\n');
 for nModel = 1:length(names)
     fprintf(fileID, '{\n');
-    fprintf(fileID, 'name : "%s",\n alias: "%s",\n', names{nModel}, alias{nModel});
-    fprintf(fileID, 'performance : "%s",\n rank: "%s",\n', num2str(allPerformance(nModel), '%.2f'), num2str(allRank(nModel), '%.2f'));
-    fprintf(fileID, 'pcolor : "%s",\n rcolor: "%s",\n', allPerformanceColor(nModel, :), allRankColor(nModel, :));
-    fprintf(fileID, 'other : [\n');
+    fprintf(fileID, '"name" : "%s",\n "alias": "%s",\n', names{nModel}, alias{nModel});
+    fprintf(fileID, '"performance" : "%s",\n "rank": "%s",\n', num2str(allPerformance(nModel), '%.2f'), num2str(allRank(nModel), '%.2f'));
+    fprintf(fileID, '"pcolor" : "%s",\n "rcolor": "%s",\n', allPerformanceColor(nModel, :), allRankColor(nModel, :));
+    fprintf(fileID, '"other" : [\n');
     for nData = 1:4
         fprintf(fileID, '{\n');
-        fprintf(fileID, 'performance : "%s",\n rank: "%s",\n', num2str(Performance(nModel, nData), '%.2f'), num2str(Rank(nModel, nData), '%.2f'));
+        fprintf(fileID, '"performance" : "%s",\n "rank": "%s",\n', num2str(Performance(nModel, nData), '%.2f'), num2str(Rank(nModel, nData), '%.2f'));
         pcolor = singlecolor(max(ceil(Performance(nModel, nData)*10), 1), :);
         rcolor = singlecolor(max(ceil(Rank(nModel, nData)*10), 1), :);
-        fprintf(fileID, 'pcolor : "%s",\n rcolor: "%s",\n', pcolor, rcolor);
+        fprintf(fileID, '"pcolor" : "%s",\n "rcolor": "%s",\n', pcolor, rcolor);
         fprintf(fileID, '\n},');
     end
     fprintf(fileID, '\b\n]\n},');
