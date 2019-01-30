@@ -37,7 +37,11 @@ function est = mlspike(dff, fr)
     while isempty(aest) && n_<=1.0
         n_ = n_ + 0.1;
         pax.eventa = amax * n_;
-        [tauest, aest, sigmaest] = spk_autocalibration(dff,pax);
+%         try
+            [tauest, aest, sigmaest] = spk_autocalibration(dff,pax);
+%         catch
+%             aest = [];
+%         end
     end
     
     % parameters
@@ -48,8 +52,9 @@ function est = mlspike(dff, fr)
         aest = amax;
     end
     
-    if isempty(tauest)
+    if ~exist('tauest', 'var') || isempty(tauest)
         tauest = 1.5;
+        sigmaest = 1;
     end
     
     par.a = aest;
@@ -61,7 +66,15 @@ function est = mlspike(dff, fr)
     % (do not display graph summary)
     par.dographsummary = false;
     % spike estimation
-    [spikest, fit, drift, parest] = spk_est(dff,par);
+    disp('start spike estimation')
+%     try
+        [spikest, fit, drift, parest] = spk_est(dff,par);
+%     catch
+%         spikest = [];
+%         fit = [];
+%         drift=[];
+%         parest = [];
+%     end
     
     est.spk    = spikest;
     est.drift  = drift;
