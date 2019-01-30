@@ -1,5 +1,5 @@
 function KS_dat_fri_oopsi(nCell)
-
+addpath('../fit_code')
 load('DataListCells.mat')
 warning('off', 'all');
 
@@ -12,6 +12,6 @@ tau     = 1.0;
 
 fri     = fri_oopsi(dff,tau, fr); %#ok<NASGU>
 
-save(['FRI_oopsi_fit_Cell_' num2str(nCell)], 'fri')
+save(['FRI_oopsi_fit_Cell_' num2str(nCell)], 'fri');
 
 end

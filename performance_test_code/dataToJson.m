@@ -18,6 +18,7 @@ for nCell  = 1:length(totCell)
     load([tempFitDir 'FRI_oopsi_fit_Cell_' num2str(nCell) '.mat'])
     load([tempFitDir 'MCMC_oopsi_fit_Cell_' num2str(nCell) '.mat'])
     load([tempFitDir 'Peel_oopsi_fit_Cell_' num2str(nCell) '.mat'])
+    load([tempFitDir 'MLSpike_fit_Cell_' num2str(nCell) '.mat'])
     
     expression = totCell(nCell).expression;
     CaIndicator = totCell(nCell).CaIndicator;
@@ -30,6 +31,10 @@ for nCell  = 1:length(totCell)
         fileFold = 'MV1GP517';
     elseif strcmp(CaIndicator, 'GCaMP6s') && strcmp(expression, 'transgenic')
         fileFold = 'MV1GP43';
+    end
+    
+    if ~exist(fileFold, 'dir')
+        mkdir(fileFold)
     end
     
     spkTime      = totCell(nCell).spk;
@@ -52,6 +57,7 @@ for nCell  = 1:length(totCell)
 %     C2S_Peel_Linear = normalized_dat(peel.model)';
 %     C2S_Peel_NonLinear = normalized_dat(peelNL.model)';
     raw_dff      = totCell(nCell).dff;
+    raw_dff(raw_dff<-max(raw_dff)) = nan;
     S2C_Linear   = S2C_linear_Function(nCell).fitCaTraces;
     S2C_Hill     = S2C_Hill_Function(nCell).fitCaTraces;
     S2C_Sigmoid  = S2C_Sigmoid_Function(nCell).fitCaTraces;
@@ -63,13 +69,17 @@ for nCell  = 1:length(totCell)
     C2S_Constrained_OOPSI_AR3 = cf3.c';
     C2S_Constrained_OOPSI_MCMC = cont.F_est';
     C2S_Peel_Linear = peel.model';
-    C2S_Peel_NonLinear = peelNL.model';
+%     C2S_Peel_NonLinear = peelNL.model';
+    C2S_MLSpike = est.F_est;
     
     calcium_file  = [fileFold '/' totCell(nCell).cellName '_' num2str(totCell(nCell).nRep, '%03d') '_dff.csv'];
     
+%     calcium_table = table(time, raw_dff, S2C_Linear, S2C_Hill, S2C_Sigmoid, C2S_Nonnegative_Wienner_Filter, ...
+%         C2S_Fast_OOPSI, C2S_Finite_Rate_Innovation, C2S_Constrained_OOPSI_AR1, C2S_Constrained_OOPSI_AR2, ...
+%         C2S_Constrained_OOPSI_AR3, C2S_Constrained_OOPSI_MCMC, C2S_Peel_Linear, C2S_Peel_NonLinear, C2S_MLSpike);
     calcium_table = table(time, raw_dff, S2C_Linear, S2C_Hill, S2C_Sigmoid, C2S_Nonnegative_Wienner_Filter, ...
         C2S_Fast_OOPSI, C2S_Finite_Rate_Innovation, C2S_Constrained_OOPSI_AR1, C2S_Constrained_OOPSI_AR2, ...
-        C2S_Constrained_OOPSI_AR3, C2S_Constrained_OOPSI_MCMC, C2S_Peel_Linear, C2S_Peel_NonLinear);
+        C2S_Constrained_OOPSI_AR3, C2S_Constrained_OOPSI_MCMC, C2S_Peel_Linear, C2S_MLSpike);
         
     writetable(calcium_table, calcium_file);
     
