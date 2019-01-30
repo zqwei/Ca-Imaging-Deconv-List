@@ -1,10 +1,10 @@
 %
 % this function runs Fast rate of innovation algorithm
-% Main paper: Jon Oñativia, Simon R. Schultz, and Pier Luigi Dragotti, A 
-%             Finite Rate of Innovation algorithm for fast and accurate 
-%             spike detection from two-photon calcium imaging. (J. Neural 
+% Main paper: Jon Oï¿½ativia, Simon R. Schultz, and Pier Luigi Dragotti, A
+%             Finite Rate of Innovation algorithm for fast and accurate
+%             spike detection from two-photon calcium imaging. (J. Neural
 %             Eng. 10 (2013) 046017)
-% Original by Jon Oñativia
+% Original by Jon Oï¿½ativia
 % http://www.commsp.ee.ic.ac.uk/~jo210/src/ca_transient.zip
 % Revised by Ziqiang Wei
 % weiz AT janelia DOT hhmi DOT org
@@ -17,7 +17,7 @@ function fri = fri_oopsi(dff, tau, fr)
     T   = T_s;
     t   = (1:length(dff))*T_s;
     t   = t';
-    
+
     t_k1     = [];
     a_k1     = [];
     win_idx1 = [];
@@ -81,7 +81,7 @@ function fri = fri_oopsi(dff, tau, fr)
     aapp(aapp < 0.3 * max_amp) = [];
     fri.spk    = sspp;
     fri.spkAmp = aapp;
-    
+
     caTime     = zeros(size(dff));
     for nSpk   = 1:length(sspp)
         spkTime = sspp(nSpk);
@@ -103,11 +103,11 @@ function [t_k, a_k, win_idx, K_i] = ca_detect_sliding_emom(original_signal, ...
                                                         param1, ...
                                                         param2)
 % -------------------------------------------------------------------------
-% Recover a stream of decaying exponentials with constant tau with a 
-% sliding window. All the decaying exponentials have the same constant. 
-% The amount of decaying exponentials for a given window position can be 
-% estimated from the signal, given by an oracle (we know the locations of 
-% the exponentials), or considered to be fixed and equal for every 
+% Recover a stream of decaying exponentials with constant tau with a
+% sliding window. All the decaying exponentials have the same constant.
+% The amount of decaying exponentials for a given window position can be
+% estimated from the signal, given by an oracle (we know the locations of
+% the exponentials), or considered to be fixed and equal for every
 % positions.
 %
 % USAGE:
@@ -127,13 +127,13 @@ function [t_k, a_k, win_idx, K_i] = ca_detect_sliding_emom(original_signal, ...
 %                      (exp(-(t-t_k)/tau)).
 %  - T               : Sampling period.
 %  - mode            : Mode to estimate the number of exponentials within
-%                      a window. Can be 'estimate' (number of exponentials 
+%                      a window. Can be 'estimate' (number of exponentials
 %                      estimated from the signal), 'oracle' (the locations
 %                      are provided) or 'fixed' (same number of exponential
 %                      for every window positions).
 %  - params          : If mode='oracle' this parameter provides the true
 %                      positions of the exponentials.
-%                      If mode='fixed' this parameter is a scalar that 
+%                      If mode='fixed' this parameter is a scalar that
 %                      provides the number of exponentials within a window.
 %
 % OUTPUT:
@@ -228,16 +228,12 @@ for i_0 = 1 : step : tot_len-win_len*TTs+1
     % Time window of the input signal and real number of spikes in the window
     idx    = (i_0:i_0+win_len*TTs-1)';
     idx    = round(idx);
-<<<<<<< HEAD
-    t_x    = original_t(idx);
-=======
     try
         t_x    = original_t(idx);
     catch
         keyboard();
     end
->>>>>>> 10c35036d02e1035111ee9b522ea5739e2573535
-    x      = original_signal(idx);    
+    x      = original_signal(idx);
     if mode == 1
         % Exponentials recovery estimating K
         [tt_k, aa_k, K] = extract_decaying_exponentials(x, t_x, alpha, ...
@@ -306,8 +302,8 @@ function [t_k, a_k, K] = extract_decaying_exponentials(x, t_x, alpha, ...
                                                        K, reps_per_k)
 % -------------------------------------------------------------------------
 % Extract K decaying exponentials from the signal x(t) applying FRI
-% methods (sampling with an exponential reproducting kernel phi(-t/T) at 
-% instants t=nT). If the K parameter is not transmitted it will be 
+% methods (sampling with an exponential reproducting kernel phi(-t/T) at
+% instants t=nT). If the K parameter is not transmitted it will be
 % estimated from the exponential moments of x(t).
 %
 % Stream of decaying exponentials:
@@ -320,10 +316,10 @@ function [t_k, a_k, K] = extract_decaying_exponentials(x, t_x, alpha, ...
 %  z_n = y_n - y_(n-1) * exp(-alpha*T)
 %
 % USAGE:
-%  [t_k, a_k] = extract_decaying_exponentials(x, t_x, alpha, 
-%                                             phi, t_phi, 
+%  [t_k, a_k] = extract_decaying_exponentials(x, t_x, alpha,
+%                                             phi, t_phi,
 %                                             alpha0, lambda,
-%                                             T, 
+%                                             T,
 %                                             c_m_n, n_vec[,
 %                                             K])
 %
@@ -348,7 +344,7 @@ function [t_k, a_k, K] = extract_decaying_exponentials(x, t_x, alpha, ...
 % x(t) and phi(t/T) must have the same temporal resolution, i.e.
 % t(i+1) - t(i) = t_phi(i+1) - t_phi(i)
 %
-if nargin == 12 
+if nargin == 12
     estimate_K = true; %#ok<*NASGU>
     sing_vals = K;
 elseif nargin == 10
@@ -362,7 +358,7 @@ end
 T_s = t_x(2) - t_x(1);
 % Sampling indices (t = nT)
 % n_vec = round(t(mod(t,T)==0)/T);
-% Time stamps of the shifted signal x(t) (so x(t) is sampled according to 
+% Time stamps of the shifted signal x(t) (so x(t) is sampled according to
 % the exponential reproduction
 t1   = n_vec(1) * T;
 t2   = (n_vec(end)+1) * T - T_s;
@@ -389,10 +385,10 @@ if nargin == 10
     S   = toeplitz(s_m(kk:end), s_m(kk:-1:1));
     D   = svd(S);
     y_i = D / D(1);
-    
+
     % Estimate K thresholding the eigenvalues
     K = sum(y_i > 0.3);
-    
+
     % Estimate K from the max of the second derivative
 %     K       = 0;
 %     x_i     = (1:length(y_i))';
@@ -412,7 +408,7 @@ if nargin == 12
     S         = toeplitz(s_m(kk:end), s_m(kk:-1:1));
     [~, D, ~] = svd(S);
     y_i       = diag(D) / D(1,1);
-    
+
     corr_sv = sing_vals * y_i;
 %     max_k   = size(sing_vals,1)/reps_per_k;
 %     k_est   = zeros(max_k, 1);
@@ -468,8 +464,8 @@ end
 function [phi, t] = generate_e_spline(alpha_vec, T_s, T, mode)
 % -------------------------------------------------------------------------
 % Generate the exponential spline of order P+1 corresponding to a vector of
-% alpha values and with a given temporal resolution. The resulting spline 
-% is obtained in time domain computing the P convolutions of the P+1 zero 
+% alpha values and with a given temporal resolution. The resulting spline
+% is obtained in time domain computing the P convolutions of the P+1 zero
 % order E-splines:
 %   phi_a_vec(t) = phi_a_0(t) * phi_a_1(t) * ... * phi_a_N(t)
 %
@@ -480,7 +476,7 @@ function [phi, t] = generate_e_spline(alpha_vec, T_s, T, mode)
 %  - alpha_vec : Vector of P+1 alpha values of the E=spline.
 %  - T_s       : Time resolution of the spline.
 %  - T         : Optional argument. Scale factor. Default T = 1.
-%  - mode      : Optional argument. 'causal', 'symmetric' or 'anticausal'. 
+%  - mode      : Optional argument. 'causal', 'symmetric' or 'anticausal'.
 %                Default mode = 'causal'.
 %
 % OUTPUT:
@@ -540,7 +536,7 @@ function c_m_n = get_c_m_n_exp(alpha_m, n, phi, t_phi, T, t_0)
 %  c_m_n = get_c_m_n_exp(alpha_m, n, phi, t[, T, t_0])
 %
 % INPUT:
-%  - alpha_m : Vector of size M with the parameters of the exponentials to 
+%  - alpha_m : Vector of size M with the parameters of the exponentials to
 %              be reproduced.
 %  - n       : Vector of size N with the values where the summation will be
 %              evaluated.
@@ -597,16 +593,16 @@ ap         = zeros(size(sp));
 for ith_sp = 1 : num_spikes
     sp_cur = sp(ith_sp);
     idx    = find(t >= sp_cur - dt_before & t <= sp_cur + dt_after);
-    [ap_cur, locs] = findpeaks(x(idx));    
+    [ap_cur, locs] = findpeaks(x(idx));
     if length(ap_cur) > 1
-%         [min_dt, idx_min] = min(abs(t(locs + idx(1) - 1) - sp_cur));        
+%         [min_dt, idx_min] = min(abs(t(locs + idx(1) - 1) - sp_cur));
 %         if t(locs(idx_min) + idx(1) - 1) > sp_cur
 %             id = find( t(idx) == sp_cur + min_dt ) + idx(1) - 1;
 %         else
 %             id = find( t(idx) == sp_cur - min_dt ) + idx(1) - 1;
-%         end         
+%         end
 %         ap(ith_sp) = x(id);
-        ap(ith_sp) = max(ap_cur);        
+        ap(ith_sp) = max(ap_cur);
 %     elseif isempty(ap_cur)
 %         warning(['No peaks found for the ' num2str(ith_sp) '-th spike'])
     elseif ~isempty(ap_cur)
