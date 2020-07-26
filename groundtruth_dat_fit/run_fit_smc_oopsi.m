@@ -1,5 +1,4 @@
-
-function KS_dat_smc_oopsi(nCell)
+function fit_smc_oopsi(nCell)
 
 load('DataListCells.mat')
 warning('off', 'all');

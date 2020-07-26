@@ -1,4 +1,4 @@
-function KS_dat_mlspike(nCell)
+function fit_mlspike(nCell)
 addpath('../fit_code/')
 load('DataListCells.mat')
 warning('off', 'all');

@@ -1,5 +1,4 @@
-
-function KS_dat_peel_oopsi(nCell)
+function fit_peel_oopsi(nCell)
 
 load('DataListCells.mat')
 warning('off', 'all');
