@@ -2,6 +2,9 @@
 
 [![](https://img.shields.io/badge/Channel-calcium2spike-blue.svg?style=popout-square&logo=slack)](https://ephys-imaging.slack.com/messages/CFPH4E859)
 
+[![DOI](https://zenodo.org/badge/53284804.svg)](https://zenodo.org/badge/latestdoi/53284804)
+
+
 Here is a collection of published calcium imaging deconvolution methods and link to their codes.
 
 A revision of each code for __basic performance test__ is marked as revision in list.
