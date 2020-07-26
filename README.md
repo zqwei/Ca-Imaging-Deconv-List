@@ -21,6 +21,12 @@ With rapid development of modern statistical techniques in this field, we found 
 ## Code redistributions
 We made significant improvements and changes to some of the codes.
 
+# Spike to imaging models
+1. Linear model
+2. Quadratic model
+3. Hill function model
+4. Sigmoid model
+
 # Imaging to spike models
 
 ## Ruble based models
