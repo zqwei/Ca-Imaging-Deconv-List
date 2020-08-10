@@ -24,6 +24,18 @@ With rapid development of modern statistical techniques in this field, we found 
 ## Code redistributions
 We made significant improvements and changes to some of the codes.
 
+# Datasets
+Please download data file from 
+
+It contains 90 precompiled recording sessions with field names, which can be directly used in the codes:
+* cellName: id of the cells.
+* nRep: id of the recording sessions; one cell could have >1 recording sessions.
+* expression: expression methods; AAV-virus or transgenic animals.
+* CaIndicator: type of calcium indicator.
+* spk: spike timing data.
+* dff: dF/F fluorescent data.
+* CaTime: recording time series of the fluorescent data.
+
 # Spike to imaging models
 1. Linear model
 2. Quadratic model
