@@ -17,10 +17,10 @@
 addpath('../Func');
 addpath('../Func/S2CfitFuncs');
 setDir;
-load([TempDatDir 'DataListCells.mat'], 'totCell');
-load([TempDatDir 'ParamsFitCells_S2CModel_nofix.mat'], 'paras');
-parasOld = paras;
-clear paras;
+load('DataListCells.mat', 'totCell');
+% load([TempDatDir 'ParamsFitCells_S2CModel_nofix.mat'], 'paras');
+% parasOld = paras;
+% clear paras;
 paras = repmat(struct('cellName',1, 'nRep', 1, 'expression', 'virus',...
                         'CaIndicator', 'GCaMP6f', 'FmNorm', nan, ...
                         'Fm',1, 'Ca0', 1, 'beta', 1, 'tau_r', 1, 'tau_d', 1),length(totCell), 1); 

@@ -4,7 +4,7 @@ import numpy as np
 from scipy.io import loadmat, savemat
 from suite2p import dcnv
 
-totCell = loadmat('../TempDat/DataListCells.mat')
+totCell = loadmat('DataListCells.mat')
 numCell = totCell['totCell'].shape[0]
 
 for nCell in range(numCell):
