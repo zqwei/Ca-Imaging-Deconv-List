@@ -51,63 +51,83 @@ gplotmatrix(paraMat, [], group, groupColor, 'oooo', [], 'off', [], nTitles, nTit
 
 setPrint(8*2, 8*2, [PlotDir 'ParamsFitCells_S2CModel_nofix'])
 
-%% Fm fixed
 
-groupColors = zeros(length(group), 3);
-for nCell  = 1:length(group)
-    groupColors(nCell, :) = groupColor(group(nCell), :);
-end
-
-parasFmFix = paras;
+%% all parameters -- Figure S3A diagonal -- KSDensity plots
 figure;
-subplot(1, 4, 1)
-hold on
-scatter([parasNoFix.ev],[parasFmFix.ev], [], groupColors,'o', 'filled')
-plot([-0.3 1], [-0.3 1], '--k', 'linewid', 1)
-xlabel('EV without fixed parameters')
-ylabel('EV with parameters Fm fixed')
-box off
-axis([-0.3 1 -0.3 1])
 
-subplot(1, 4, 2)
-hold on
-scatter([parasFmFix.var],[parasFmFix.ev], [], groupColors,'o', 'filled')
-ylabel('EV with parameters Fm fixed')
-xlabel('var. DF/F')
-box off
+txlim = [230/1000, 4, 3.1, 160];
 
-
-load([TempDatDir 'DataListCells.mat'], 'totCell');
-numSpk = arrayfun(@(x) length(x.spk)/x.CaTime(end), totCell, 'uniformoutput', false);
-numSpk = cell2mat(numSpk);
-
-subplot(1, 4, 3)
-hold on
-scatter(numSpk, [parasFmFix.ev], [], groupColors,'o', 'filled')
-xlabel('Spike rate (Hz)')
-ylabel('EV with parameters Fm fixed')
-box off
-
-subplot(1, 4, 4)
-hold on
-scatter(numSpk, [parasFmFix.var], [], groupColors,'o', 'filled')
-xlabel('Spike rate (Hz)')
-ylabel('var. DF/F')
-box off
-setPrint(8*4, 6*1, [PlotDir 'ModelCellFits/ParamsFitEV_FiringRate'])
-
-nGroupName = {'6f-AAV', '6s-AAV', '5.17', '4.3'};
-nTitles = {'\tau_{r} (s)', '\tau_{d} (s)', 'n', 'K', 'Fm'};
-figure('visible', 'on');
-for nKey = 1:length(nKeys)
-    subplot(1, length(nKeys), nKey)
-    boxplot(paraMat(:, nKey), group, 'label', nGroupName, 'colors', 'k','plotStyle','compact')
+for nTitle = 1:length(nTitles) - 1
+    subplot(1, length(nTitles), nTitle);
+    hold on;
+    for nGroup = 1:length(expression)
+        [f,xi] = ksdensity(paraMat(group==nGroup, nTitle));
+        plot(xi, f, '-', 'color', groupColor(nGroup, :), 'linewid', 1.5);
+    end
+    xlabel(nTitles{nTitle});
+    xlim([0 txlim(nTitle)]);
+    ylabel('prob. dens.')
+    hold off
     box off
-    ylabel(nTitles{nKey})
-    xlabel('Ca++ indicator type')
     set(gca, 'TickDir', 'out')
 end
-setPrint(8*5, 6, [PlotDir 'ModelCellFits/ParamsComparison_Groups'])
 
-% close all
+subplot(1, length(nTitles), length(nTitles));
+hold on
+nGroupName = {'6f-AAV', '6s-AAV', 'GP 5.17', 'GP 4.3'};
+for nColor = 1:length(nGroupName)
+    plot(0, nColor, 's', 'color', groupColor(nColor,:), 'MarkerFaceColor',groupColor(nColor,:),'MarkerSize', 8)
+    text(1, nColor, nGroupName{nColor})
+end
+xlim([0 10])
+hold off
+axis off
+
+setPrint(8*5, 6, [PlotDir 'ModelCellFits/ParamsSpaceKSDensity_Groups'])
+
+
+%% all parameters -- Figure S3A diagonal -- KSDensity plots
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
