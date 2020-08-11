@@ -36,6 +36,9 @@ It contains 90 precompiled recording sessions with field names, which can be dir
 * dff: dF/F fluorescent data.
 * CaTime: recording time series of the fluorescent data.
 
+# Figures
+Codes were used to generated to figures in Wei et al., 2020.
+
 # Spike to imaging models
 1. Linear model
 2. Quadratic model
