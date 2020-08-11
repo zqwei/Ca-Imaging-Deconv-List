@@ -58,7 +58,7 @@ plot([0 1], [0 1], 'k')
 ylabel('Sigmoid fit')
 xlabel('Linear fit')
 set(gca, 'TickDir', 'out')
-setPrint(8, 6, 'Performance_linear', 'pdf')
+setPrint(8, 6, [PlotDir 'Performance_linear'], 'pdf')
 
 %% Figure S3G right -- EV from hill vs sigmoid fit
 figure;
@@ -68,7 +68,7 @@ plot([-0.4 1], [-0.4 1], 'k')
 ylabel('Sigmoid fit')
 xlabel('Hill fit')
 set(gca, 'TickDir', 'out')
-setPrint(8, 6, 'Performance_hill', 'pdf')
+setPrint(8, 6, [PlotDir 'Performance_hill'], 'pdf')
 
 %% Figure S3F -- EV from sigmoid fit vs cell spike rate
 figure;
@@ -77,7 +77,7 @@ scatter(spk, evMat(:, 2), [], group)
 ylabel('Sigmoid fit')
 xlabel('Spike (/s)')
 set(gca, 'TickDir', 'out')
-setPrint(8, 6, 'Performance_spk', 'pdf')
+setPrint(8, 6, [PlotDir 'Performance_spk'], 'pdf')
 
 %% Figure 4A -- example cells
 figure
@@ -104,4 +104,4 @@ hold on
 plot(totCell(nCell).CaTime, sigmoidParas(nCell).fitCaTraces)
 gridxy(totCell(nCell).spk, [])
 xlim([100 200])
-setPrint(8, 18, 'ExampleNeuron', 'pdf')
+setPrint(8, 18, [PlotDir 'ExampleNeuron'], 'pdf')

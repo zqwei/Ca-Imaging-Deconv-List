@@ -86,5 +86,5 @@ xlim([0 10])
 hold off
 axis off
 
-setPrint(8*5, 6, [PlotDir 'ModelCellFits/ParamsSpaceKSDensity_Groups'])
+setPrint(8*5, 6, [PlotDir 'ParamsSpaceKSDensity_Groups'])
 
