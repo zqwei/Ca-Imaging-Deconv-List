@@ -44,7 +44,7 @@ Wei, Ziqiang; Lin, Bei-Jung; Chen, Tsai-Wen; Daie, Kayvon; Svoboda, Karel; Druck
 
 # Figures
 Codes were used to generated to figures 3, 4, S2, S3 in folder `figures` in Wei et al., 2020.
-* Figure 3CDE, Figure S2:
+* Figure 3CDE, Figure S2: `figures/example_cell.m`
 * Figure 3F: `figures/d_prime.m`
 * Figure 3G: `figures/peak_dff.m`
 * Figure 4A, Figure S3BEFG: `figures/s2c_performance.m`
