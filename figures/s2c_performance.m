@@ -1,5 +1,5 @@
 %
-% Parameter space for S2F fitting in different imaging conditions
+% S2F fitting performance in different imaging conditions
 % 
 % Figure 4A, S3BEFG, Wei et al., 2020
 %

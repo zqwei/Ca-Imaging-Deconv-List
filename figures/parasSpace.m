@@ -1,5 +1,5 @@
 %
-% Parameter space for S2F fitting in different imaging conditions
+% Single cell AP triggered fluorescence analysis -- peak response
 % 
 % Figure 4B, S3A, Wei et al., 2020
 %
