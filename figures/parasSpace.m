@@ -55,7 +55,7 @@ gplotmatrix(paraMat, [], group, groupColor, 'oooo', [], 'off', [], nTitles, nTit
 setPrint(8*2, 8*2, [PlotDir 'ParamsFitCells_S2CModel_nofix'])
 
 
-%% all parameters -- Figure S3A diagonal -- KSDensity plots
+%% all parameters -- Figure S3A diagonal/Figure 4B -- KSDensity plots
 figure;
 
 txlim = [230/1000, 4, 3.1, 160];
