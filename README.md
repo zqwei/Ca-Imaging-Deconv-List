@@ -11,9 +11,9 @@ A revision of each code for __basic performance test__ is marked as revision in 
 
 ## Main goal
 
-As a part of my thesis work (unpublished yet), we will try to make a comparison of exisiting calcium imaging deconvolution methods, using the [published dataset](http://crcns.org/data-sets/methods/cai-1) from Karel Svoboda's lab, where both electrical and GCaMP optical responses of a single neuron are simultaneously recorded. We laid out serveral performance indice in comparison and left a note for the performance computation, which is not clear in the original codes. This comparison project is planned to be gradually invovled. In this case, one can leave notes in __Issues tracker__, if any new comparison is missing in list or any performance should be computed towards cross comparison.
+We made a comparison of exisiting calcium imaging deconvolution methods, using the simultaneous ephys-imaging data (see below), where both electrical and GCaMP optical responses of a single neuron are simultaneously recorded. We laid out serveral performance indice in comparison and left a note for the performance computation, which is not clear in the original codes. This comparison project is planned to be gradually invovled. In this case, one can leave notes in __Issues tracker__, if any new comparison is missing in list or any performance should be computed towards cross comparison.
 
-> * Dataset description: Simultaneous imaging and loose-seal cell-attached electrical recordings from neurons expressing a variety of genetically encoded calcium indicators. The data is described in: Akerboom, et al JNS 2012 and Chen, et al Nature 2013. The data provides ground truth by recording electrical and GCaMP optical responses simultaneously.
+> * Experiment description: Simultaneous imaging and loose-seal cell-attached electrical recordings from neurons expressing a variety of genetically encoded calcium indicators. The detail of experiment is described in: Akerboom, et al JNS 2012 and Chen, et al Nature 2013. The data provides ground truth by recording electrical and GCaMP optical responses simultaneously.
 > * Tested code: all code being test is highlighted in __bold__.
 
 More inquires should be email to: __weiz AT janelia DOT hhmi DOT org__
@@ -39,17 +39,17 @@ It contains 90 precompiled recording sessions with field names, which can be dir
 ## Citation of the precompiled data
 Wei, Ziqiang; Lin, Bei-Jung; Chen, Tsai-Wen; Daie, Kayvon; Svoboda, Karel; Druckmann, Shaul (2020): Precompiled data for "A comparison of neuronal population dynamics measured with calcium imaging and electrophysiology". figshare. Dataset. https://doi.org/10.6084/m9.figshare.12786296.v1
 
-## Citation of the raw data
+## Citation of the raw data of TG recordings
 
 
 # Figures
-Codes were used to generated to figures 3, 4, S2, S3 (using ) in folder `figures` in Wei et al., 2020.
+Codes were used to generated to figures 3, 4, S2, S3 in folder `figures` in Wei et al., 2020.
 * Figure 3CDE, Figure S2:
-* Figure 3F:
-* Figure 3G:
+* Figure 3F: `figures/d_prime.m`
+* Figure 3G: `figures/peak_dff.m`
 * Figure 4A, Figure S3BEFG: `figures/s2c_performance.m`
 * Figure 4B, Figure S3A: `figures/parasSpace.m`
-* Figure S3CD: code is not included but can be sent upon request.
+* Figure 3AB, S3CD: code is not included but can be sent upon request.
 
 # Spike to imaging models
 1. Linear model
