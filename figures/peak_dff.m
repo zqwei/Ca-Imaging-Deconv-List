@@ -1,5 +1,5 @@
 %
-% Parameter space for S2F fitting in different imaging conditions
+% Single cell AP triggered fluorescence analysis -- peak response
 % 
 % Figure 3G, Wei et al., 2020
 %
@@ -47,7 +47,6 @@ for ncell = 1:length(cells)
     spkTime    = cells(ncell).spk;
     fmean_comp = double(cells(ncell).dff);
     t_frame    = cells(ncell).CaTime;
-    spike      = [];
     recording_len = ceil(t_frame(end));
     peak       = false(recording_len*fs, 1);
     peak(round(spkTime*fs)) = true;
