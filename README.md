@@ -39,11 +39,16 @@ It contains 90 precompiled recording sessions with field names, which can be dir
 ## Citation of the precompiled data
 Wei, Ziqiang; Lin, Bei-Jung; Chen, Tsai-Wen; Daie, Kayvon; Svoboda, Karel; Druckmann, Shaul (2020): Precompiled data for "A comparison of neuronal population dynamics measured with calcium imaging and electrophysiology". figshare. Dataset. https://doi.org/10.6084/m9.figshare.12786296.v1
 
+## Citation of the raw data
+
+
 # Figures
 Codes were used to generated to figures 3, 4, S2, S3 (using ) in folder `figures` in Wei et al., 2020.
-* Figure 3
-* Figure 4A, Figure S3BEFG: `figures/s2c_performance`
-* Figure 4B, Figure S3A: ``
+* Figure 3CDE, Figure S2:
+* Figure 3F:
+* Figure 3G:
+* Figure 4A, Figure S3BEFG: `figures/s2c_performance.m`
+* Figure 4B, Figure S3A: `figures/parasSpace.m`
 * Figure S3CD: code is not included but can be sent upon request.
 
 # Spike to imaging models
