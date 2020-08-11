@@ -25,7 +25,7 @@ With rapid development of modern statistical techniques in this field, we found 
 We made significant improvements and changes to some of the codes.
 
 # Datasets
-Please download data file from https://ndownloader.figshare.com/files/24189497
+The simultaneous ephys-imaging data were recorded by Bei-Jung Lin (TG mice) and Tsai-Wen Chen (AAV) and a precompiled version can be downloaded data file from https://ndownloader.figshare.com/files/24189497 , which can be used directly in the codes.
 
 It contains 90 precompiled recording sessions with field names, which can be directly used in the codes:
 * cellName: id of the cells.
@@ -36,8 +36,15 @@ It contains 90 precompiled recording sessions with field names, which can be dir
 * dff: dF/F fluorescent data.
 * CaTime: recording time series of the fluorescent data.
 
+## Citation of the precompiled data
+Wei, Ziqiang; Lin, Bei-Jung; Chen, Tsai-Wen; Daie, Kayvon; Svoboda, Karel; Druckmann, Shaul (2020): Precompiled data for "A comparison of neuronal population dynamics measured with calcium imaging and electrophysiology". figshare. Dataset. https://doi.org/10.6084/m9.figshare.12786296.v1
+
 # Figures
-Codes were used to generated to figures in Wei et al., 2020.
+Codes were used to generated to figures 3, 4, S2, S3 (using ) in folder `figures` in Wei et al., 2020.
+* Figure 3
+* Figure 4A, Figure S3BEFG: `figures/s2c_performance`
+* Figure 4B, Figure S3A: ``
+* Figure S3CD: code is not included but can be sent upon request.
 
 # Spike to imaging models
 1. Linear model
