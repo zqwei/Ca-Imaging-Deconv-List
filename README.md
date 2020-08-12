@@ -40,7 +40,7 @@ It contains 90 precompiled recording sessions with field names, which can be dir
 Wei, Ziqiang; Lin, Bei-Jung; Chen, Tsai-Wen; Daie, Kayvon; Svoboda, Karel; Druckmann, Shaul (2020): Precompiled data for "A comparison of neuronal population dynamics measured with calcium imaging and electrophysiology". figshare. Dataset. https://doi.org/10.6084/m9.figshare.12786296.v1
 
 ## Citation of the raw data of TG recordings
-
+Citation: Wei, Ziqiang; Lin, Bei-Jung; Chen, Tsai-Wen; Daie, Kayvon; Svoboda, Karel; Druckmann, Shaul (2020): Raw data for "A comparison of neuronal population dynamics measured with calcium imaging and electrophysiology". figshare. Dataset. https://doi.org/10.6084/m9.figshare.12792587
 
 # Figures
 Codes were used to generated to figures 3, 4, S2, S3 in folder `figures` in Wei et al., 2020.
